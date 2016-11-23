@@ -4,7 +4,8 @@
     config: {
         refs: {
             // We're going to lookup our views by xtype.
-            notesListContainer: "noteslistcontainer"
+            notesListContainer: "noteslistcontainer",
+            noteEditor: "noteeditor"
         },
         control: {
             notesListContainer: {
@@ -14,23 +15,46 @@
             }
         }
     },
-
-    // Commands.
-    onNewNoteCommand: function () {
-
-        console.log("onNewNoteCommand");        
+    // Transitions
+    slideLeftTransition: { type: 'slide', direction: 'left' },
+    slideRightTransition: { type: 'slide', direction: 'right' },
+    // Helper functions
+    getRandomInt: function (min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    onEditNoteCommand: function (list, record) {
+    activateNoteEditor: function (record) {
 
+        var noteEditor = this.getNoteEditor();
+        noteEditor.setRecord(record); // load() is deprecated.
+        Ext.Viewport.animateActiveItem(noteEditor, this.slideLeftTransition);
+    },
+    activateNotesList: function () {
+        Ext.Viewport.animateActiveItem(this.getNotesListContainer(), this.slideRightTransition);
+    },
+    // Commands.
+    onNewNoteCommand: function() {
+        console.log("onNewNoteCommand");
+        var now = new Date();
+        var noteId = (now.getTime()).toString() + (this.getRandomInt(0, 100)).toString();
+        var newNote = Ext.create("NotesApp.model.Note", {
+            id: noteId,
+            dateCreated: now,
+            title: "",
+            narrative: ""
+        });
+
+        this.activateNoteEditor(newNote);
+    },
+    onEditNoteCommand: function(list, record) {
         console.log("onEditNoteCommand");
     },
     // Base Class functions.
-    launch: function () {
+    launch: function() {
         this.callParent(arguments);
         Ext.getStore("Notes").load();
         console.log("launch");
     },
-    init: function () {
+    init: function() {
         this.callParent(arguments);
         console.log("init");
     }
