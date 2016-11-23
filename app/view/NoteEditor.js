@@ -5,7 +5,7 @@
     config: {
         scrollable: 'vertical'
     },
-    initialize: function() {
+    initialize: function () {
 
         this.callParent(arguments);
 
@@ -64,16 +64,16 @@
 
         this.add([
             topToolbar,
-            {
-                xtype: "fieldset",
+            { xtype: "fieldset",
                 items: [noteTitleEditor, noteNarrativeEditor]
             },
             bottomToolbar
         ]);
     },
-    onSaveButtonTap: function() {
+    onSaveButtonTap: function () {
         console.log("saveNoteCommand");
         this.fireEvent("saveNoteCommand", this);
     }
 
 });
+
