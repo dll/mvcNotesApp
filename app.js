@@ -1,19 +1,21 @@
-Ext.application({
+﻿Ext.application({
     name: "NotesApp",
-    //controllers: ["Notes"],
+
     models: ["Note"],
     stores: ["Notes"],
     controllers: ["Notes"],
-    views: ["NotesList", "NotesListContainer", "NoteEditor"],
-    launch: function() {
-        var notesListContainer = {
-            xtype: "noteslistcontainer"
+    views: ["NotesList", "NoteEditor"],
+
+    launch: function () {
+
+        var notesListView = {
+            xtype: "noteslistview"
         };
-        var noteEditor = {
-            xtype: "noteeditor"
+        var noteEditorView = {
+            xtype: "noteeditorview"
         };
-        // Ext.create("NotesApp.view.NotesListContainer");
-        //Ext.Viewport.add(notesListContainer);
-        Ext.Viewport.add([notesListContainer, noteEditor]);
+
+        Ext.Viewport.add([notesListView, noteEditorView]);
+
     }
 });
