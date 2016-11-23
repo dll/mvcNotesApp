@@ -5,14 +5,14 @@
     config: {
         scrollable: 'vertical'
     },
-    initialize: function () {
-
+    initialize: function() {
         this.callParent(arguments);
-
         var backButton = {
             xtype: "button",
             ui: "back",
-            text: "Home"
+            text: "Home",
+            handler: this.onBackButtonTap,
+            scope: this
         };
 
         var saveButton = {
@@ -38,6 +38,7 @@
             xtype: "button",
             iconCls: "trash",
             iconMask: true,
+            handler: this.onDeleteButtonTap,
             scope: this
         };
 
@@ -64,16 +65,24 @@
 
         this.add([
             topToolbar,
-            { xtype: "fieldset",
+            {
+                xtype: "fieldset",
                 items: [noteTitleEditor, noteNarrativeEditor]
             },
             bottomToolbar
         ]);
     },
-    onSaveButtonTap: function () {
+    onSaveButtonTap: function() {
         console.log("saveNoteCommand");
         this.fireEvent("saveNoteCommand", this);
+    },
+    onDeleteButtonTap: function() {
+        console.log("deleteNoteCommand");
+        this.fireEvent("deleteNoteCommand", this);
+    },
+    onBackButtonTap: function() {
+        console.log("backToHomeCommand");
+        this.fireEvent("backToHomeCommand", this);
     }
 
 });
-

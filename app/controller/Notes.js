@@ -15,36 +15,33 @@
             },
             noteEditor: {
                 // The commands fired by the note editor.
-                saveNoteCommand: "onSaveNoteCommand"
+                saveNoteCommand: "onSaveNoteCommand",
+                deleteNoteCommand: "onDeleteNoteCommand"
             }
-
         }
     },
     // Transitions
     slideLeftTransition: { type: 'slide', direction: 'left' },
     slideRightTransition: { type: 'slide', direction: 'right' },
     // Helper functions
-    getRandomInt: function (min, max) {
+    getRandomInt: function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    activateNoteEditor: function (record) {
+    activateNoteEditor: function(record) {
 
         var noteEditor = this.getNoteEditor();
         noteEditor.setRecord(record); // load() is deprecated.
         Ext.Viewport.animateActiveItem(noteEditor, this.slideLeftTransition);
     },
-    activateNotesList: function () {
+    activateNotesList: function() {
         Ext.Viewport.animateActiveItem(this.getNotesListContainer(), this.slideRightTransition);
     },
 
     // Commands.
-    onNewNoteCommand: function () {
-
+    onNewNoteCommand: function() {
         console.log("onNewNoteCommand");
-
         var now = new Date();
         var noteId = (now.getTime()).toString() + (this.getRandomInt(0, 100)).toString();
-
         var newNote = Ext.create("NotesApp.model.Note", {
             id: noteId,
             dateCreated: now,
@@ -52,16 +49,16 @@
             narrative: ""
         });
 
-        this.activateNoteEditor(newNote); 
-     
+        this.activateNoteEditor(newNote);
+
     },
-    onEditNoteCommand: function (list, record) {
+    onEditNoteCommand: function(list, record) {
 
         console.log("onEditNoteCommand");
 
         this.activateNoteEditor(record);
     },
-    onSaveNoteCommand: function () {
+    onSaveNoteCommand: function() {
 
         console.log("onSaveNoteCommand");
 
@@ -90,18 +87,30 @@
 
         notesStore.sync();
 
-        notesStore.sort([{ property: 'dateCreated', direction: 'DESC'}]);
+        notesStore.sort([{ property: 'dateCreated', direction: 'DESC' }]);
 
         this.activateNotesList();
-    },  
+    },
+    onDeleteNoteCommand: function() {
 
+        console.log("onDeleteNoteCommand");
+
+        var noteEditor = this.getNoteEditor();
+        var currentNote = noteEditor.getRecord();
+        var notesStore = Ext.getStore("Notes");
+
+        notesStore.remove(currentNote);
+        notesStore.sync();
+
+        this.activateNotesList();
+    },
     // Base Class functions.
-    launch: function () {
+    launch: function() {
         this.callParent(arguments);
         Ext.getStore("Notes").load();
         console.log("launch");
     },
-    init: function () {
+    init: function() {
         this.callParent(arguments);
         console.log("init");
     }

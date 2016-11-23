@@ -3,9 +3,7 @@
     alias: "widget.noteslistcontainer",
 
     initialize: function () {
-
         this.callParent(arguments);
-
         var newButton = {
             xtype: "button",
             text: 'New',
@@ -13,7 +11,6 @@
             handler: this.onNewButtonTap,
             scope: this
         };
-
         var topToolbar = {
             xtype: "toolbar",
             title: 'My Notes',
@@ -23,7 +20,6 @@
                 newButton
             ]
         };
-
         var notesList = {
             xtype: "noteslist",
             store: Ext.getStore("Notes"),
@@ -31,7 +27,6 @@
                 disclose: { fn: this.onNotesListDisclose, scope: this }
             }
         };
-
         this.add([topToolbar, notesList]);
     },
     onNewButtonTap: function () {
