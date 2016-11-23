@@ -16,7 +16,8 @@
             noteEditor: {
                 // The commands fired by the note editor.
                 saveNoteCommand: "onSaveNoteCommand",
-                deleteNoteCommand: "onDeleteNoteCommand"
+                deleteNoteCommand: "onDeleteNoteCommand",
+                backToHomeCommand: "onBackToHomeCommand"
             }
         }
     },
@@ -113,5 +114,10 @@
     init: function() {
         this.callParent(arguments);
         console.log("init");
+    },
+    onBackToHomeCommand: function() {
+
+        console.log("onBackToHomeCommand");
+        this.activateNotesList();
     }
 });
