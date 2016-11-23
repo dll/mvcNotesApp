@@ -1,15 +1,15 @@
-﻿Ext.define("NotesApp.model.Note", {
+﻿Ext.define("NotesApp.model.mNote", {
     extend: "Ext.data.Model",
     config: {
         idProperty: 'id',
-        fields: [
+        fields: [ //结构
             { name: 'id', type: 'int' },
             { name: 'dateCreated', type: 'date', dateFormat: 'c' },
             { name: 'title', type: 'string' },
             { name: 'narrative', type: 'string' }
         ],
-        validations: [
-            { type: 'presence', field: 'id' },
+        validations: [ //验证
+            { type: 'presence', field: 'id' }, //presence必需
             { type: 'presence', field: 'dateCreated' },
             { type: 'presence', field: 'title', message: 'Please enter a title for this note.' }
         ]

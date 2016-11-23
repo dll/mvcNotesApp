@@ -1,8 +1,12 @@
-﻿/* Increase height of list item so title and narrative fit */
+﻿/* Increase height of list item so title and narrative fit 3.5? */
+
 .x-list .x-list-item .x-list-item-label {
     min-height: 3.5em!important;
 }
+
+
 /* Move the disclosure button up to account for the list item height increase */
+
 .x-list .x-list-disclosure {
     position: absolute;
     bottom: 0.85em;
@@ -22,7 +26,7 @@
 
 .list-item-narrative {
     float: left;
-    width: 95%;
+    width: 100%;
     color: #666666;
     font-size: 80%;
     white-space: nowrap;

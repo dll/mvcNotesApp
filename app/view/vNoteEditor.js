@@ -1,16 +1,14 @@
-﻿Ext.define("NotesApp.view.NoteEditor", {
+﻿Ext.define("NotesApp.view.vNoteEditor", {
     extend: "Ext.form.Panel",
     requires: "Ext.form.FieldSet",
     alias: "widget.noteeditorview",
     config: {
         scrollable: 'vertical',
-        items: [
-            {
+        items: [{
                 xtype: "toolbar",
                 docked: "top",
                 title: "Edit Note",
-                items: [
-                    {
+                items: [{
                         xtype: "button",
                         ui: "back",
                         text: "Home",
@@ -28,18 +26,16 @@
             {
                 xtype: "toolbar",
                 docked: "bottom",
-                items: [
-                    {
-                        xtype: "button",
-                        iconCls: "trash",
-                        iconMask: true,
-                        itemId: "deleteButton"
-                    }
-                ]
+                items: [{
+                    xtype: "button",
+                    iconCls: "trash",
+                    iconMask: true,
+                    itemId: "deleteButton"
+                }]
             },
-            { xtype: "fieldset",
-                items: [
-                    {
+            {
+                xtype: "fieldset",
+                items: [{
                         xtype: 'textfield',
                         name: 'title',
                         label: 'Title',
@@ -53,8 +49,7 @@
                 ]
             }
         ],
-        listeners: [
-            {
+        listeners: [{
                 delegate: "#backButton",
                 event: "tap",
                 fn: "onBackButtonTap"
@@ -71,18 +66,18 @@
             }
         ]
     },
-    onSaveButtonTap: function () {
+    //视图中绑定事件函数，实现用户的交互
+    onSaveButtonTap: function() {
         console.log("saveNoteCommand");
         this.fireEvent("saveNoteCommand", this);
     },
-    onDeleteButtonTap: function () {
+    onDeleteButtonTap: function() {
         console.log("deleteNoteCommand");
         this.fireEvent("deleteNoteCommand", this);
     },
-    onBackButtonTap: function () {
+    onBackButtonTap: function() {
         console.log("backToHomeCommand");
         this.fireEvent("backToHomeCommand", this);
     }
 
 });
-
