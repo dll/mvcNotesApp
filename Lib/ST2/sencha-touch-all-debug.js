@@ -15,6 +15,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
+Build date: 2015-06-10 14:41:48 (dd5f81fb46d0676281fdd021ada1da3ef06abd27)
 
 Build date: 2015-06-10 14:41:48 (dd5f81fb46d0676281fdd021ada1da3ef06abd27)
 */
