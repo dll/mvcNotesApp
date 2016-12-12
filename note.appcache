@@ -1,0 +1,25 @@
+CACHE MANIFEST
+#2016-12-12 琅琊102
+#version 1.0.0
+
+CACHE:
+#index.html
+#Lib/ST2/sencha-touch-all-debug.js
+#Lib/ST2/sencha-touch-debug.js
+#Lib/ST2/sencha-touch-all.js
+Lib/ST2/sencha-touch.js
+resources/css/sencha-touch.css
+app.js
+resources/css/app.css
+resources/css/map.css
+app/model/mNote.js
+app/controller/cNotes.js
+app/store/sNotes.js
+app/view/vNoteEditor.js
+app/view/vNoteMap.js
+app/view/vNotesList.js
+
+NETWORK:
+http://api.map.baidu.com/api?v=2.0&ak=o6nZDuK8WOmCY04mZHh7Fm2EvPNGYK43
+http://developer.baidu.com/map/jsdemo/demo/convertor.js
+*

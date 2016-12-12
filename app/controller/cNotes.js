@@ -88,7 +88,7 @@
         currentNote.set("latitude", newValues.latitude);
         var errors = currentNote.validate();
         if (!errors.isValid()) {
-            Ext.Msg.alert('提示', errors.getByField("title")[0].getMessage(), Ext.emptyFn);
+            alert('提示', errors.getByField("title")[0].getMessage(), Ext.emptyFn);
             currentNote.reject();
             return;
         }
@@ -137,14 +137,14 @@
                     Ext.getCmp('latitude').setValue(geo.getLatitude());
                     Ext.getCmp('longitude').setValue(geo.getLongitude());
                     console.log("定位成功");
-                    Ext.Msg.alert("定位成功");
+                    alert("定位成功");
                     Ext.Viewport.setMasked(false); //取消定位时的mask
                 },
                 locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
                     if (bTimeout) {
-                        Ext.Msg.alert('定位超时');
+                        alert('定位超时');
                     } else {
-                        Ext.Msg.alert('定位失败！请在手机浏览器上测试');
+                        alert('定位失败！请在手机浏览器上测试');
                     }
                 }
             }
@@ -219,7 +219,7 @@
             //调用自定义的百度函数
             this.baidumap(longitude, latitude, title, narrative);
         } else {
-            Ext.Msg.alert("记事当时没有开启定位或定位失败");
+            alert("记事当时没有开启定位或定位失败");
             return;
         }
         var noteMapView = this.getNoteMapView();
